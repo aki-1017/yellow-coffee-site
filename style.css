@@ -1,15 +1,32 @@
-body {
-  font-family: 'Playwrite IT Moderna', sans-serif;
-  margin: 0px;
-  padding: 0px;
-  background-color: #fff;
-  color: #333;
+/* Basic Reset & Box Sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
+body {
+  margin: 0;
+  font-family: 'Playwrite IT Moderna', sans-serif;
+  background-color: #fff;
+  color: #333;
+  /* Fixed header adjustment: headerの高さ(70px)に合わせる */
+  padding-top: 70px;
+}
+
+/* Header Styles */
 header {
   background-color: #ffdd00;
   color: #333;
-  /* padding: 10px 0px; */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 70px; /* 高さを明確に指定 */
+  /* padding-bottom は削除 */
+  display: flex;
+  align-items: center;
 }
 
 header div {
@@ -17,289 +34,301 @@ header div {
   justify-content: space-between;
   align-items: center;
   max-width: 1200px;
-  margin: 0px auto;
-  padding: 0px 20px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1.25rem; /* 20px / 16px */
 }
 
-header h1 a{
+header h1 a {
   font-family: 'Pacifico', cursive;
-  margin: 0px;
-  font-size: 40px; /* 2.5em * 16px */
+  margin: 0;
+  font-size: 2.5rem; /* 40px / 16px */
   text-decoration: none;
   color: #333;
+  line-height: 1;
 }
 
-header ul {
+header nav ul {
   list-style: none;
-  padding: 0px;
-  margin: 0px;
+  padding: 0;
+  margin: 0;
   display: flex;
 }
 
-header li {
-  margin-left: 20px;
+header nav li {
+  margin-left: 1.25rem;
 }
 
-header li a {
+header nav li a {
   text-decoration: none;
   color: #333;
-  font-size: 17.6px; /* 1.1em * 16px */
+  font-size: 1.1rem; /* 17.6px / 16px */
+  padding: 0.3rem 0.5rem;
+  display: inline-block;
 }
 
-ul li a:hover {
+/* Hover effects */
+header nav li a:hover,
+header h1 a:hover,
+.buy a:hover,
+#contact input[type="submit"]:hover {
   background-color: #9d7958;
-  color: #000;
+  color: #fff;
   transition: background-color 0.3s, color 0.3s;
 }
 
-header h1 a:hover {
-  background-color: #9d7958;
-  color: #000;
-  transition: background-color 0.3s, color 0.3s;
-}
-
+/* Main Content Area */
 main {
   max-width: 100%;
-  margin: 0px auto;
-  padding: 20px;
+  margin: 0 auto;
 }
-
 
 .top img {
   width: 100%;
   height: 710px;
   object-fit: cover;
   display: block;
-  padding-top: 90px;
 }
 
-
-.fv, .menu, .access, .info {
-  padding: 40px 0px;
+/* Common Section Styles */
+.fv, .menu, .access, .contact, .info {
+  padding: 2.5rem 1.25rem;
   text-align: center;
   border-bottom: 1px solid #eee;
 }
 
-.fv:last-child, .menu:last-child, .three:last-child, .info:last-child {
+main section:last-child {
   border-bottom: none;
 }
 
-.fv h2, .menu h2, .access h2, .info h2 {
+/* Section Heading Styles */
+.fv h2, .menu h2, .access h2, .contact h2, .info h2 {
   color: #ffdd00;
-  font-size: 32px; /* 2em * 16px */
-  margin-bottom: 15px;
+  font-size: 2rem; /* 32px / 16px */
+  margin-top: 0;
+  margin-bottom: 1rem; /* 16px / 16px */
+  border-bottom: 2px solid #ffdd00;
+  display: inline-block;
+  padding-bottom: 0.3rem;
 }
 
-.fv p {
-  line-height: 28.8px; /* 1.8 * 16px */
-  margin-bottom: 10px;
+/* Paragraph Styles */
+.fv p, .access p, #contact p:first-of-type {
+  line-height: 1.8;
+  margin-bottom: 0.625rem; /* 10px / 16px */
 }
 
-.menu p {
-  margin: 8px 0px;
-  font-size: 17.6px; /* 1.1em * 16px */
+/* Menu Section Specific Styles */
+.menu {
+  background-color: #9d7958;
+  color: #fff;
+}
+.menu h2 {
+  color: #ffdd00;
+  border-bottom-color: #ffdd00;
+}
+.menu-list {
+  list-style: none;
+  padding: 0 1rem;
+  margin: 0 auto;
+  max-width: 500px;
+}
+.menu-list li {
+  font-size: 1.1rem;
+  margin: 0.75rem 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px dotted #eee;
+}
+.menu-list li:last-child {
+  border-bottom: none;
+}
+.menu-list span {
+  font-weight: bold;
+  color: #ffdd00;
+  margin-left: 1rem;
 }
 
-.access p {
-  margin: 8px 0px;
-}
-
+/* Access Section Specific Styles */
 .access iframe {
-  margin-top: 20px;
-  width: 100%;
-  height: 450px;
-  border: 0px;
+  margin-top: 1.25rem;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border: 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 600px;
 }
 
-#contact {
-  padding: 40px 0; /* 上下の余白 */
-  text-align: center; /* テキストを中央寄せ */
-  border-bottom: 1px solid #eee; /* 下線 */
-}
-
-#contact h2 {
-  color: #ffdd00; /* 見出しの色 */
-  font-size: 2em;
-  margin-bottom: 15px;
-}
-
-#contact p {
+/* Contact Section Specific Styles */
+#contact p:first-of-type {
   line-height: 1.6;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
-
 #contact form {
-  width: 80%; /* フォームの幅 */
-  max-width: 600px; /* 最大幅 */
-  margin: 0 auto; /* 中央寄せ */
-  text-align: left; /* フォーム内のテキストを左寄せ */
+  width: 90%;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
 }
-
 #contact dl {
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
-
 #contact dt {
-  margin-bottom: 5px;
+  margin-bottom: 0.3rem;
   font-weight: bold;
 }
-
 #contact dd {
   margin-left: 0;
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
 }
-
 #contact input[type="text"],
 #contact input[type="email"],
 #contact textarea {
   width: 100%;
-  padding: 10px;
+  padding: 0.625rem;
   border: 1px solid #ccc;
   border-radius: 5px;
-  box-sizing: border-box;
-  font-size: 1em;
+  font-size: 1rem;
 }
-
 #contact textarea {
-  resize: vertical; /* 縦方向のリサイズを可能にする */
+  resize: vertical;
 }
-
 #contact input[type="submit"] {
   background-color: #ffdd00;
   color: #333;
-  padding: 10px 20px;
+  padding: 0.625rem 1.25rem;
   border: none;
   border-radius: 5px;
-  font-size: 1em;
+  font-size: 1rem;
   cursor: pointer;
+  display: block;
+  width: fit-content;
+  margin: 1rem auto 0;
 }
 
-#contact input[type="submit"]:hover { background-color: #9d7958;
-transition: background-color 0.3s, color 0.3s;
+/* Info Section Specific Styles */
+.info {
+  background-color: #9d7958;
+  color: #fff;
 }
-
+.info h2 {
+ color: #ffdd00;
+ border-bottom-color: #ffdd00;
+}
 .info h3 {
-  font-size: 24px; /* 1.5em * 16px */
-  margin-bottom: 20px;
+  font-size: 1.5rem; /* 24px / 16px */
+  margin-bottom: 1.25rem;
 }
-
 .info h3 span {
   color: #ffdd00;
+  font-size: inherit;
 }
-
+h3 span {
+    font-size: inherit;
+}
 .info div:first-of-type {
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
-
 .info div:first-of-type img {
   width: 80px;
   height: auto;
 }
-
 .buy a {
   display: inline-block;
   background-color: #ffdd00;
   color: #333;
-  padding: 15px 40px;
+  padding: 0.9rem 2.5rem;
   text-decoration: none;
   border-radius: 15px;
-  font-size: 17.6px; /* 1.1em * 16px */
+  font-size: 1.1rem;
 }
 
+/* Footer Styles */
 footer {
   background-color: #333;
   color: #fff;
   text-align: center;
-  padding: 20px 0px;
+  padding: 1.25rem 0;
 }
-
 footer div {
   max-width: 1200px;
-  margin: 0px auto;
-  padding: 0px 20px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
 }
-
 footer small {
-  font-size: 14.4px; /* 0.9em * 16px */
-  /* background-color: #ffdd00; */
+  font-size: 0.9rem;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
+  header {
+    flex-direction: column;
+    height: auto;
+    padding: 0.5rem 0;
+  }
+
   header div {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  header h1 {
+    margin-bottom: 0.5rem;
+  }
+
+  header nav ul {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  header nav li {
+    margin: 0.3rem 0.6rem;
+  }
+
+  .top img {
+    height: auto;
+    max-height: 400px;
+  }
+
+  .menu-list {
+    padding: 0;
+  }
+
+  .menu-list li {
     flex-direction: column;
     align-items: center;
     text-align: center;
   }
 
-  header ul {
-    margin-top: 15px;
-    flex-direction: column;
-    align-items: center;
+  .menu-list span {
+    margin-left: 0;
+    margin-top: 0.3rem;
   }
 
-  header li {
-    margin: 10px 0px;
+  .access iframe {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
   }
 
-  header h1 {
-    font-size: 32px; /* 2em * 16px */
-  }
-
-  main {
-    padding: 15px;
-  }
-
-  .fv h2, .menu h2, .three h2, .info h2 {
-    font-size: 28.8px; /* 1.8em * 16px */
+  #contact form {
+    width: 100%;
+    padding: 0 1rem;
   }
 
   .info h3 {
-    font-size: 20.8px; /* 1.3em * 16px */
+    font-size: 1.2rem;
   }
 
   .buy a {
-    padding: 12px 25px;
-    font-size: 16px; /* 1em * 16px */
-
+    padding: 0.6rem 1.5rem;
+    font-size: 1rem;
   }
-}
 
-section h2 {
-  border-bottom: 2px solid #ffdd00; /* 例：下線 */
-  display: inline-block;
-  padding-bottom: 5px; /* ボーダーと文字の間隔を調整 */
-}
-
-/* style.css */
-section p {
-  line-height: 2.5; /* 好みの値に調整してください */
-  margin-bottom: 10px; /* 必要に応じて段落間の余白も調整 */
-}
-
-span {
-  font-size: small;
-}
-
-.buy a:hover {
-  background-color: #f8f4f1;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.info {
-  background-color: #9d7958;
-}
-
-.menu {
-  background-color: #9d7958;
-}
-
-header {
-  position: fixed;
-  top: 0; /* ヘッダーをウィンドウの上端に固定する場合 */
-  left: 0;
-  width: 100%; /* ヘッダーの幅をウィンドウいっぱいに広げる場合 */
-  background-color: #ffdd00; /* 必要に応じて背景色を設定 */
-  z-index: 100; /* 他の要素よりも前面に表示するためのz-index */
-  /* その他のスタイル */
+  footer small {
+    font-size: 0.8rem;
+  }
 }
